@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityStandardAssets.ImageEffects;
 
 public class Stamina : MonoBehaviour {
 
@@ -12,7 +13,9 @@ public class Stamina : MonoBehaviour {
     private Rigidbody rb;
     //public CameraShake camShake;
     public static bool isDecay = false;
-
+    public VignetteAndChromaticAberration vc;
+    public float maxDimIntensity = 0.32f;
+    public float dimIntesityRate = .1f;
 
     void Start()
     {
@@ -45,7 +48,7 @@ public class Stamina : MonoBehaviour {
 
                 if (energy < minStaminaShake)
                 {
-                    
+                    vc.intensity = Mathf.Clamp(vc.intensity + dimIntesityRate, 0, maxDimIntensity);
                 }
 
             }

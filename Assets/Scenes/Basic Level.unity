@@ -91,6 +91,11 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &302339724 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1763381758508540, guid: d34b5a86db628ee49be68beabba73e15,
+    type: 2}
+  m_PrefabInternal: {fileID: 2033936340}
 --- !u!1001 &500372266
 Prefab:
   m_ObjectHideFlags: 0
@@ -146,7 +151,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4697718628210014, guid: 5755967f0c4e312479beabe3e548ce59, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.24
+      value: 9.86
       objectReference: {fileID: 0}
     - target: {fileID: 4697718628210014, guid: 5755967f0c4e312479beabe3e548ce59, type: 2}
       propertyPath: m_LocalPosition.z
@@ -176,6 +181,11 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 16.443241
       objectReference: {fileID: 0}
+    - target: {fileID: 23903935926326546, guid: 5755967f0c4e312479beabe3e548ce59,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0a17a1e657afe1741b754d1ef76afc47, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5755967f0c4e312479beabe3e548ce59, type: 2}
   m_IsPrefabParent: 0
@@ -194,8 +204,8 @@ GameObject:
   - component: {fileID: 912144903}
   - component: {fileID: 912144910}
   m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -287,7 +297,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 912144902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.59, y: 8.24, z: -8.846}
+  m_LocalPosition: {x: 0.59, y: 16.86, z: -8.846}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1578533695}
@@ -307,9 +317,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   energy: 100
-  decayRate: 2
+  decayRate: 3
   intensityShake: 2
-  minStaminaShake: 50
+  minStaminaShake: 30
+  vc: {fileID: 1578533698}
+  maxDimIntensity: 0.32
+  dimIntesityRate: 0.005
 --- !u!1 &1129603204
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +404,9 @@ GameObject:
   - component: {fileID: 1578533692}
   - component: {fileID: 1578533691}
   - component: {fileID: 1578533696}
+  - component: {fileID: 1578533698}
   - component: {fileID: 1578533697}
+  - component: {fileID: 1578533699}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -492,9 +507,190 @@ MonoBehaviour:
   m_GameObject: {fileID: 1578533690}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77a160c16f2302648894557cc458c91e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fd999d1b2cf94a45a5b0a47ce074bef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redChannel:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  greenChannel:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  blueChannel:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  useDepthCorrection: 0
+  zCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  depthRedChannel:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  depthGreenChannel:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  depthBlueChannel:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  saturation: 1
+  selectiveCc: 0
+  selectiveFromColor: {r: 1, g: 1, b: 1, a: 1}
+  selectiveToColor: {r: 1, g: 1, b: 1, a: 1}
+  mode: 0
+  updateTextures: 1
+  colorCorrectionCurvesShader: {fileID: 4800000, guid: 62bcade1028c24ca1a39760ed84b9487,
+    type: 3}
+  simpleColorCorrectionCurvesShader: {fileID: 4800000, guid: 438ddd58d82c84d9eb1fdc56111702e1,
+    type: 3}
+  colorCorrectionSelectiveShader: {fileID: 4800000, guid: e515e0f94cefc4c0db54b45cba621544,
+    type: 3}
+--- !u!114 &1578533698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578533690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  intensity: 0
+  chromaticAberration: 0.2
+  axialAberration: 0.5
+  blur: 0
+  blurSpread: 0.75
+  luminanceDependency: 0.25
+  blurDistance: 2.5
+  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
+  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
+  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
+    type: 3}
+--- !u!114 &1578533699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1578533690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56edf428a5d189498367def600b0f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objs:
+  - {fileID: 302339724}
+  - {fileID: 1718791853}
+  sta: {fileID: 912144910}
+  saturationRate: 0.5
+  minSaturation: 0
+  maxSaturation: 1
+  increaseDecayRate: 3
 --- !u!1 &1718791853
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +768,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1718791853}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7285881, y: -11.83, z: -13.24}
+  m_LocalPosition: {x: 1.7285881, y: 1.18, z: -13.24}
   m_LocalScale: {x: 1.5, y: 1, z: 1.6}
   m_Children: []
   m_Father: {fileID: 0}
@@ -672,7 +868,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4827108554549688, guid: d34b5a86db628ee49be68beabba73e15, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 3.444
+      value: 12.06
       objectReference: {fileID: 0}
     - target: {fileID: 4827108554549688, guid: d34b5a86db628ee49be68beabba73e15, type: 2}
       propertyPath: m_LocalPosition.z
