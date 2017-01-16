@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour {
+public class Movement : MonoBehaviour
+{
 
     public float wallDistance = 0f;
     public float walkingSpeed = 2f;
     public float climbingSpeed = 4f;
 
-    public static bool climbing = false;
+    public static bool climbing = true;
 
     private Rigidbody rb;
     // Use this for initialization
@@ -35,7 +36,7 @@ public class Movement : MonoBehaviour {
             rb.useGravity = false;
         }
         // no wall or stop climbing
-        else if (climbing && playerHit.collider == null || !Input.GetButton("Climb"))
+        else if (climbing && playerHit.collider == null)
         {
             climbing = false;
             rb.useGravity = true;
@@ -47,11 +48,6 @@ public class Movement : MonoBehaviour {
             rb.velocity = transform.up * vInput * 5f + transform.right * hInput * 5f;
             rb.angularVelocity = Vector3.zero;
             transform.rotation = Quaternion.LookRotation(playerHit.normal * -1f);
-        }
-        else
-        {
-            rb.velocity = this.GetComponent<Rigidbody>().velocity.y * this.transform.up + this.transform.forward * vInput * 5f;
-            rb.angularVelocity = new Vector3(0f, hInput * 2f, 0f);
         }
 
         if (Input.GetKeyDown("escape"))

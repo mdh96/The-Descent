@@ -45,7 +45,7 @@ public class Stamina : MonoBehaviour {
 
                 if (energy < minStaminaShake)
                 {
-                    //camShake.isShaking = true;
+                    
                 }
 
             }
