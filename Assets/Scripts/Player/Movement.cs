@@ -45,13 +45,14 @@ public class Movement : MonoBehaviour
         // climbling action.
         if (climbing)
         {
-            rb.velocity = transform.up * vInput * 5f + transform.right * hInput * 5f;
+            rb.velocity = transform.up * vInput * climbingSpeed + transform.right * hInput * climbingSpeed;
             rb.angularVelocity = Vector3.zero;
             transform.rotation = Quaternion.LookRotation(playerHit.normal * -1f);
         }
 
         if (Input.GetKeyDown("escape"))
-            Cursor.lockState = CursorLockMode.None;
+            Application.Quit();
+            //Cursor.lockState = CursorLockMode.None;
 
     }
 

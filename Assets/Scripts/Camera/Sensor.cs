@@ -15,9 +15,11 @@ public class Sensor : MonoBehaviour {
 
     private float initalRate;
     private bool isDecayActive = false;
+    private GameObject lava;
 
     void Start()
     {
+        lava = GameObject.FindGameObjectWithTag("Lava");
         cc = GetComponent<ColorCorrectionCurves>();
         initalRate = sta.energy;
     }
